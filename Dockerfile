@@ -1,7 +1,7 @@
 FROM nginx:1.17.6-alpine AS builder
 
 # Download sources
-RUN wget "http://nginx.org/download/nginx-1.17.6.tar.gz" -O nginx.tar.gz
+RUN wget "http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" -O nginx.tar.gz
 
 # For latest build deps, see https://github.com/nginxinc/docker-nginx/blob/master/mainline/alpine/Dockerfile
 RUN apk add --no-cache --virtual .build-deps \
