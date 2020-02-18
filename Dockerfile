@@ -1,4 +1,4 @@
-FROM nginx:1.17.6-alpine AS builder
+FROM nginx:1.17.8-alpine AS builder
 
 # Download sources
 RUN wget "http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" -O nginx.tar.gz
@@ -32,7 +32,7 @@ RUN CONFARGS=$(nginx -V 2>&1 | sed -n -e 's/^.*arguments: //p') \
   && \
   rm -rf /tmp/nginx-$NGINX_VERSION
 
-FROM nginx:1.17.6-alpine
+FROM nginx:1.17.8-alpine
 COPY --from=builder /usr/sbin/nginx /usr/sbin/nginx
 
 EXPOSE 80
